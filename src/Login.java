@@ -185,15 +185,16 @@ public class Login extends javax.swing.JFrame {
             body_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(header_login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(body_loginLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel6)
                 .addGroup(body_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(body_loginLayout.createSequentialGroup()
-                        .addGap(56, 56, 56)
+                        .addGap(42, 42, 42)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(body_loginLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel2)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         body_loginLayout.setVerticalGroup(
             body_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,7 +240,8 @@ public class Login extends javax.swing.JFrame {
             execute = prep_statement.executeQuery("Select * from admin where email = '"+email+"' and password = '"+password+"'");
             if (execute.next()) {
                 dispose();
-                Admin_Dashboard admin = new Admin_Dashboard();
+                String user_id = execute.getString("id");
+                Admin_Profile1 admin = new Admin_Profile1(user_id);
                 admin.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(this, "Invalid Email or Password");
