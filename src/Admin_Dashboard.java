@@ -59,7 +59,7 @@ public class Admin_Dashboard extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/studentdashboard.png"))); // NOI18N
 
-        Dashboard.setBackground(new java.awt.Color(142, 142, 192));
+        Dashboard.setBackground(new java.awt.Color(75, 75, 130));
         Dashboard.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         Dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dashboard.png"))); // NOI18N
         Dashboard.setText("Dashboard");

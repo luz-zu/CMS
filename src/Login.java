@@ -241,7 +241,12 @@ public class Login extends javax.swing.JFrame {
             if (execute.next()) {
                 dispose();
                 String user_id = execute.getString("id");
-                Admin_Profile1 admin = new Admin_Profile1(user_id);
+                String admin_name = execute.getString("name");
+                String admin_address = execute.getString("address");
+                String admin_phone = execute.getString("phone");
+                String admin_email = execute.getString("email");
+                String admin_dob = execute.getString("dob");
+                new_admin admin = new new_admin(user_id, admin_name, admin_address, admin_phone, admin_email, admin_dob);
                 admin.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(this, "Invalid Email or Password");
