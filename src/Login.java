@@ -83,6 +83,11 @@ public class Login extends javax.swing.JFrame {
         role_input.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         role_input.setForeground(new java.awt.Color(0, 0, 0));
         role_input.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Teacher", "Student" }));
+        role_input.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                role_inputActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -261,6 +266,10 @@ public class Login extends javax.swing.JFrame {
        Registration_pg rgstr = new Registration_pg();
        rgstr.setVisible(true);
     }//GEN-LAST:event_register_btnActionPerformed
+
+    private void role_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_role_inputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_role_inputActionPerformed
 
     /**
      * @param args the command line arguments
