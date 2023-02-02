@@ -45,9 +45,6 @@ public class new_admin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        popupMenu1 = new java.awt.PopupMenu();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        logout2 = new javax.swing.JButton();
         Header_dashboard = new javax.swing.JPanel();
         label1 = new java.awt.Label();
         jLabel3 = new javax.swing.JLabel();
@@ -85,19 +82,29 @@ public class new_admin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         oldpass_field = new javax.swing.JPasswordField();
         jLabel20 = new javax.swing.JLabel();
-
-        popupMenu1.setLabel("popupMenu1");
-
-        logout2.setBackground(new java.awt.Color(75, 75, 130));
-        logout2.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        logout2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/graduated.png"))); // NOI18N
-        logout2.setText("    Student");
-        logout2.setBorder(null);
-        logout2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logout2ActionPerformed(evt);
-            }
-        });
+        coursesComponent = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        login_btn1 = new javax.swing.JButton();
+        login_btn2 = new javax.swing.JButton();
+        add_courses_btn = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        jLabel9 = new javax.swing.JLabel();
+        addCoursesComponent = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        coursename_field = new javax.swing.JTextField();
+        jScrollBar1 = new javax.swing.JScrollBar();
+        Back_btn = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel22 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel15 = new javax.swing.JLabel();
+        First_name1 = new javax.swing.JTextField();
+        First_name2 = new javax.swing.JTextField();
+        First_name3 = new javax.swing.JTextField();
+        First_name4 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -385,7 +392,7 @@ public class new_admin extends javax.swing.JFrame {
                                 .addComponent(oldpass_field, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)))
                         .addComponent(jLabel4))
                     .addComponent(update_btn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(121, 121, 121))
         );
@@ -444,6 +451,237 @@ public class new_admin extends javax.swing.JFrame {
 
         Body.add(profileComponent, "card2");
 
+        coursesComponent.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel8.setFont(new java.awt.Font("Palatino Linotype", 0, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel8.setText("Courses");
+
+        login_btn1.setBackground(new java.awt.Color(75, 75, 130));
+        login_btn1.setFont(new java.awt.Font("Poppins Medium", 1, 14)); // NOI18N
+        login_btn1.setForeground(new java.awt.Color(255, 255, 255));
+        login_btn1.setText("Active Courses");
+        login_btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                login_btn1ActionPerformed(evt);
+            }
+        });
+
+        login_btn2.setBackground(new java.awt.Color(75, 75, 130));
+        login_btn2.setFont(new java.awt.Font("Poppins Medium", 1, 14)); // NOI18N
+        login_btn2.setForeground(new java.awt.Color(255, 255, 255));
+        login_btn2.setText("Deactivated Courses");
+        login_btn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                login_btn2ActionPerformed(evt);
+            }
+        });
+
+        add_courses_btn.setBackground(new java.awt.Color(75, 75, 130));
+        add_courses_btn.setFont(new java.awt.Font("Poppins Medium", 1, 14)); // NOI18N
+        add_courses_btn.setForeground(new java.awt.Color(255, 255, 255));
+        add_courses_btn.setText("Add Courses");
+        add_courses_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_courses_btnActionPerformed(evt);
+            }
+        });
+
+        jList1.setBackground(new java.awt.Color(204, 204, 255));
+        jList1.setForeground(new java.awt.Color(0, 0, 0));
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(jList1);
+
+        jLabel9.setFont(new java.awt.Font("Palatino Linotype", 0, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel9.setText("Ongoing Courses");
+
+        javax.swing.GroupLayout coursesComponentLayout = new javax.swing.GroupLayout(coursesComponent);
+        coursesComponent.setLayout(coursesComponentLayout);
+        coursesComponentLayout.setHorizontalGroup(
+            coursesComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(coursesComponentLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(coursesComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(coursesComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel9)
+                        .addComponent(jLabel8)
+                        .addGroup(coursesComponentLayout.createSequentialGroup()
+                            .addComponent(login_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(login_btn2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(add_courses_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(coursesComponentLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(399, 399, 399)))
+                .addContainerGap(177, Short.MAX_VALUE))
+        );
+        coursesComponentLayout.setVerticalGroup(
+            coursesComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(coursesComponentLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabel8)
+                .addGap(18, 18, 18)
+                .addGroup(coursesComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(login_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(login_btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(add_courses_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(78, Short.MAX_VALUE))
+        );
+
+        Body.add(coursesComponent, "card2");
+
+        addCoursesComponent.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel11.setFont(new java.awt.Font("Palatino Linotype", 0, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel11.setText("Add Courses");
+
+        jLabel13.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setText("Course Name");
+
+        coursename_field.setBackground(new java.awt.Color(255, 255, 255));
+        coursename_field.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        coursename_field.setForeground(new java.awt.Color(0, 0, 0));
+
+        Back_btn.setBackground(new java.awt.Color(255, 255, 255));
+        Back_btn.setForeground(new java.awt.Color(255, 255, 255));
+        Back_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
+        Back_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Back_btnActionPerformed(evt);
+            }
+        });
+
+        jLabel21.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel21.setText("Year ");
+
+        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Year 1", "Year 2", "Year 3" }));
+
+        jLabel22.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel22.setText("Sem");
+
+        jComboBox2.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBox2.setForeground(new java.awt.Color(0, 0, 0));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sem 1", "Sem 2" }));
+
+        jLabel15.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel15.setText("Module Name");
+
+        First_name1.setBackground(new java.awt.Color(255, 255, 255));
+        First_name1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        First_name1.setForeground(new java.awt.Color(0, 0, 0));
+
+        First_name2.setBackground(new java.awt.Color(255, 255, 255));
+        First_name2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        First_name2.setForeground(new java.awt.Color(0, 0, 0));
+
+        First_name3.setBackground(new java.awt.Color(255, 255, 255));
+        First_name3.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        First_name3.setForeground(new java.awt.Color(0, 0, 0));
+
+        First_name4.setBackground(new java.awt.Color(255, 255, 255));
+        First_name4.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        First_name4.setForeground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout addCoursesComponentLayout = new javax.swing.GroupLayout(addCoursesComponent);
+        addCoursesComponent.setLayout(addCoursesComponentLayout);
+        addCoursesComponentLayout.setHorizontalGroup(
+            addCoursesComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addCoursesComponentLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(addCoursesComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addCoursesComponentLayout.createSequentialGroup()
+                        .addGroup(addCoursesComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(addCoursesComponentLayout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Back_btn)
+                                .addGap(42, 42, 42))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addCoursesComponentLayout.createSequentialGroup()
+                                .addGroup(addCoursesComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(addCoursesComponentLayout.createSequentialGroup()
+                                        .addGroup(addCoursesComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel21)
+                                            .addComponent(jLabel22))
+                                        .addGap(100, 100, 100))
+                                    .addGroup(addCoursesComponentLayout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel15)
+                                        .addGap(39, 39, 39)))
+                                .addGroup(addCoursesComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(First_name1)
+                                    .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, 265, Short.MAX_VALUE)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(First_name2)
+                                    .addComponent(First_name3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(First_name4))
+                                .addGap(346, 346, 346)))
+                        .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(addCoursesComponentLayout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addGap(39, 39, 39)
+                        .addComponent(coursename_field, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+        );
+        addCoursesComponentLayout.setVerticalGroup(
+            addCoursesComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addCoursesComponentLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(addCoursesComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel11)
+                    .addComponent(Back_btn))
+                .addGap(18, 18, 18)
+                .addGroup(addCoursesComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(coursename_field, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(addCoursesComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addCoursesComponentLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel21))
+                    .addGroup(addCoursesComponentLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(addCoursesComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addCoursesComponentLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel22))
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(addCoursesComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(First_name1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(First_name2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(First_name3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(First_name4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(165, Short.MAX_VALUE))
+            .addComponent(jScrollBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        Body.add(addCoursesComponent, "card2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -470,7 +708,10 @@ public class new_admin extends javax.swing.JFrame {
     }//GEN-LAST:event_DashboardActionPerformed
 
     private void CoursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CoursesActionPerformed
-        // TODO add your handling code here:
+        Body.removeAll();
+        Body.add(coursesComponent);
+        Body.repaint();
+        Body.revalidate();
     }//GEN-LAST:event_CoursesActionPerformed
 
     private void ResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResultActionPerformed
@@ -487,10 +728,6 @@ public class new_admin extends javax.swing.JFrame {
        lgn.setVisible(true);
         
     }//GEN-LAST:event_logout1ActionPerformed
-
-    private void logout2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_logout2ActionPerformed
 
     private void profileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileActionPerformed
         Body.removeAll();
@@ -560,6 +797,28 @@ public class new_admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_oldpass_fieldActionPerformed
 
+    private void login_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_login_btn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_login_btn1ActionPerformed
+
+    private void login_btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_login_btn2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_login_btn2ActionPerformed
+
+    private void add_courses_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_courses_btnActionPerformed
+        Body.removeAll();
+        Body.add(addCoursesComponent);
+        Body.repaint();
+        Body.revalidate();
+    }//GEN-LAST:event_add_courses_btnActionPerformed
+
+    private void Back_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Back_btnActionPerformed
+        Body.removeAll();
+        Body.add(coursesComponent);
+        Body.repaint();
+        Body.revalidate();
+    }//GEN-LAST:event_Back_btnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -598,29 +857,49 @@ public class new_admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Back_btn;
     private javax.swing.JPanel Body;
     private javax.swing.JButton Courses;
     private javax.swing.JButton Dashboard;
+    private javax.swing.JTextField First_name1;
+    private javax.swing.JTextField First_name2;
+    private javax.swing.JTextField First_name3;
+    private javax.swing.JTextField First_name4;
     private javax.swing.JPanel Header_dashboard;
     private javax.swing.JButton Result;
+    private javax.swing.JPanel addCoursesComponent;
+    private javax.swing.JButton add_courses_btn;
     private javax.swing.JPasswordField confirmpass_field;
+    private javax.swing.JTextField coursename_field;
+    private javax.swing.JPanel coursesComponent;
     private javax.swing.JPanel dashbaord;
-    private javax.swing.Box.Filler filler1;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private java.awt.Label label1;
     private javax.swing.JLabel label_address;
@@ -629,11 +908,11 @@ public class new_admin extends javax.swing.JFrame {
     private javax.swing.JLabel label_id;
     private javax.swing.JLabel label_name;
     private javax.swing.JLabel label_phone;
+    private javax.swing.JButton login_btn1;
+    private javax.swing.JButton login_btn2;
     private javax.swing.JButton logout1;
-    private javax.swing.JButton logout2;
     private javax.swing.JPasswordField newpass_field;
     private javax.swing.JPasswordField oldpass_field;
-    private java.awt.PopupMenu popupMenu1;
     private javax.swing.JButton profile;
     private javax.swing.JPanel profileComponent;
     private javax.swing.JButton teacher;
