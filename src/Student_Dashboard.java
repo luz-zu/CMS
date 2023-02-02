@@ -7,13 +7,22 @@
  *
  * @author DELL
  */
-public class Student_Dashboard extends javax.swing.JFrame {
 
+import java.sql.*;
+public class Student_Dashboard extends javax.swing.JFrame {
+    Statement prep_statement;
+    ResultSet execute_query;
     /**
      * Creates new form Registration
      */
     public Student_Dashboard() {
         initComponents();
+    }
+    
+    public Connection checkConnection() {
+        db database = new db();
+        Connection conn = database.checkConnection();
+        return conn;
     }
 
     /**
@@ -467,7 +476,14 @@ public class Student_Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_newpass_fieldActionPerformed
 
     private void update_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_btnActionPerformed
-       
+       try {
+           Connection conn = checkConnection();
+           prep_statement = conn.createStatement();
+           execute_query = prep_statement.executeQuery("");
+           
+       } catch(Exception ex) {
+           System.out.println(ex);
+       }
     }//GEN-LAST:event_update_btnActionPerformed
 
     private void oldpass_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oldpass_fieldActionPerformed
