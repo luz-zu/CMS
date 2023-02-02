@@ -7,13 +7,24 @@
  *
  * @author DELL
  */
-public class Registration_pg extends javax.swing.JFrame {
 
+import java.sql.*;
+import javax.swing.JOptionPane;
+
+public class Registration_pg extends javax.swing.JFrame {
+    PreparedStatement prep_statement;
+    ResultSet execute_query;
     /**
      * Creates new form Registration
      */
     public Registration_pg() {
         initComponents();
+    }
+    
+    public Connection checkConnection() {
+        db database = new db();
+        Connection conn = database.checkConnection();
+        return conn;
     }
 
     /**
@@ -49,7 +60,7 @@ public class Registration_pg extends javax.swing.JFrame {
         email = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         phone = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
+        course_label = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         role = new javax.swing.JComboBox<>();
         course = new javax.swing.JComboBox<>();
@@ -187,9 +198,9 @@ public class Registration_pg extends javax.swing.JFrame {
         phone.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         phone.setForeground(new java.awt.Color(0, 0, 0));
 
-        jLabel15.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel15.setText("Course");
+        course_label.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        course_label.setForeground(new java.awt.Color(0, 0, 0));
+        course_label.setText("Course");
 
         jLabel16.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
@@ -197,7 +208,12 @@ public class Registration_pg extends javax.swing.JFrame {
 
         role.setBackground(new java.awt.Color(255, 255, 255));
         role.setForeground(new java.awt.Color(0, 0, 0));
-        role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Teacher ", "Student", " " }));
+        role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Teacher" }));
+        role.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                roleActionPerformed(evt);
+            }
+        });
 
         course.setBackground(new java.awt.Color(255, 255, 255));
         course.setForeground(new java.awt.Color(0, 0, 0));
@@ -210,7 +226,6 @@ public class Registration_pg extends javax.swing.JFrame {
         password.setBackground(new java.awt.Color(255, 255, 255));
         password.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         password.setForeground(new java.awt.Color(0, 0, 0));
-        password.setText("jPasswordField1");
         password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordActionPerformed(evt);
@@ -224,7 +239,6 @@ public class Registration_pg extends javax.swing.JFrame {
         confirm_password.setBackground(new java.awt.Color(255, 255, 255));
         confirm_password.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         confirm_password.setForeground(new java.awt.Color(0, 0, 0));
-        confirm_password.setText("jPasswordField1");
         confirm_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirm_passwordActionPerformed(evt);
@@ -267,7 +281,7 @@ public class Registration_pg extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, body_loginLayout.createSequentialGroup()
                         .addGroup(body_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(body_loginLayout.createSequentialGroup()
-                                .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(course_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(33, 33, 33))
                             .addGroup(body_loginLayout.createSequentialGroup()
                                 .addGroup(body_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -371,7 +385,7 @@ public class Registration_pg extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(body_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(course, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15))
+                    .addComponent(course_label))
                 .addGap(18, 18, 18)
                 .addGroup(body_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
@@ -414,9 +428,73 @@ public class Registration_pg extends javax.swing.JFrame {
     }//GEN-LAST:event_confirm_passwordActionPerformed
 
     private void submit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submit_btnActionPerformed
-       dispose();
-       Login lgn = new Login();
-       lgn.setVisible(true);
+       try{ 
+           Connection conn = checkConnection(); 
+           
+           String first_name = First_name.getText();
+           String middle_name = Middle_name.getText();
+           String last_name = Last_name.getText();
+           String DOB = dob.getText();
+           String Address = address.getText();
+           String Gender =  gender.getSelectedItem().toString();
+           String Phone = phone.getText();
+           String Email = email.getText();
+           String Role = role.getSelectedItem().toString();
+           String Course = course.getSelectedItem().toString();
+           String Password =  String.valueOf(password.getPassword());
+           String Confirm_password = String.valueOf(confirm_password.getPassword());
+           
+           if (first_name.isEmpty() || last_name.isEmpty() || DOB.isEmpty() || Address.isEmpty() || Gender.isEmpty() || Phone.isEmpty() || Email.isEmpty() || Role.isEmpty() || Course.isEmpty() || Password.isEmpty()) {
+               JOptionPane.showMessageDialog(this, "Do not leave any field empty");
+               return;
+            }
+           
+           if (!Password.equals(Confirm_password)) {
+               JOptionPane.showMessageDialog(this, "Password not matched");
+               return;
+           }
+           if (Role == "Student") {
+                prep_statement = conn.prepareStatement("Insert into student (First_Name, Middle_Name, Last_Name, DOB, Address, Gender, Phone, Email, Course, Password) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                prep_statement.setString(1, first_name);
+                prep_statement.setString(2, middle_name);
+                prep_statement.setString(3, last_name);
+                prep_statement.setString(4, DOB);
+                prep_statement.setString(5, Address);
+                prep_statement.setString(6, Gender);
+                prep_statement.setString(7, Phone);
+                prep_statement.setString(8, Email);
+                prep_statement.setString(9, Course);
+                prep_statement.setString(10, Password);
+                int row = prep_statement.executeUpdate();
+                System.out.println(row);
+                JOptionPane.showMessageDialog(this, "Registration Successful");
+                dispose();
+                Login lgn = new Login();
+                lgn.setVisible(true);
+                return;
+           } else if  (Role == "Teacher") {
+                prep_statement = conn.prepareStatement("Insert into teacher (First_Name, Middle_Name, Last_Name, DOB, Address, Gender, Phone, Email, Password) values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                prep_statement.setString(1, first_name);
+                prep_statement.setString(2, middle_name);
+                prep_statement.setString(3, last_name);
+                prep_statement.setString(4, DOB);
+                prep_statement.setString(5, Address);
+                prep_statement.setString(6, Gender);
+                prep_statement.setString(7, Phone);
+                prep_statement.setString(8, Email);
+                prep_statement.setString(9, Password);
+                int row = prep_statement.executeUpdate();
+                System.out.println(row);
+                JOptionPane.showMessageDialog(this, "Registration Successful");
+                dispose();
+                Login lgn = new Login();
+                lgn.setVisible(true);
+                return;
+           }
+
+        }catch (Exception ex) {
+            System.out.println(ex);
+        }
     }//GEN-LAST:event_submit_btnActionPerformed
 
     private void Cancel_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cancel_btnActionPerformed
@@ -424,6 +502,17 @@ public class Registration_pg extends javax.swing.JFrame {
        Login lgn = new Login();
        lgn.setVisible(true);
     }//GEN-LAST:event_Cancel_btnActionPerformed
+
+    private void roleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roleActionPerformed
+        String isRole = role.getSelectedItem().toString();
+        if (isRole != "Student") {
+            course.setVisible(false);
+            course_label.setVisible(false);
+        } else {
+            course.setVisible(true);
+            course_label.setVisible(true);
+        }
+    }//GEN-LAST:event_roleActionPerformed
 
     /**
      * @param args the command line arguments
@@ -470,6 +559,7 @@ public class Registration_pg extends javax.swing.JFrame {
     private javax.swing.JPanel body_login;
     private javax.swing.JPasswordField confirm_password;
     private javax.swing.JComboBox<String> course;
+    private javax.swing.JLabel course_label;
     private javax.swing.JTextField dob;
     private javax.swing.JTextField email;
     private javax.swing.JComboBox<String> gender;
@@ -478,7 +568,6 @@ public class Registration_pg extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
