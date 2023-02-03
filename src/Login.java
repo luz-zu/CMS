@@ -242,19 +242,26 @@ public class Login extends javax.swing.JFrame {
             String password =  String.valueOf(password_input.getPassword());
             String role = role_input.getSelectedItem().toString();
             Statement prep_statement = conn.createStatement();
-            execute = prep_statement.executeQuery("Select * from admin where email = '"+email+"' and password = '"+password+"'");
-            if (execute.next()) {
-                dispose();
-                String user_id = execute.getString("id");
-                String admin_name = execute.getString("name");
-                String admin_address = execute.getString("address");
-                String admin_phone = execute.getString("phone");
-                String admin_email = execute.getString("email");
-                String admin_dob = execute.getString("dob");
-                new_admin admin = new new_admin(user_id, admin_name, admin_address, admin_phone, admin_email, admin_dob);
-                admin.setVisible(true);
-            } else {
-                JOptionPane.showMessageDialog(this, "Invalid Email or Password");
+            if (role == "Admin") {
+                execute = prep_statement.executeQuery("Select * from admin where email = '"+email+"' and password = '"+password+"'");
+                if (execute.next()) {
+                    dispose();
+                    String user_id = execute.getString("id");
+                    new_admin admin = new new_admin(user_id);
+                    admin.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Invalid Email or Password");
+                }
+            } else if (role == "Student") {
+                execute = prep_statement.executeQuery("Select * from student where email = '"+email+"' and password = '"+password+"'");
+                if (execute.next()) {
+                    dispose();
+                    String student_id = execute.getString("Student_Id");
+                    Student_portal student = new Student_portal(student_id);
+                    student.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Invalid Email or Password");
+                }
             }
         } catch(Exception ex) {
             System.out.println(ex);
