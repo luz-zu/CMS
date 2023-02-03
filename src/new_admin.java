@@ -1,5 +1,6 @@
 
 import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /*
@@ -21,7 +22,7 @@ public class new_admin extends javax.swing.JFrame {
     /**
      * Creates new form Registration
      */
-    public new_admin(String ID, String admin_name, String admin_address, String admin_phone, String admin_email, String admin_dob) {
+    public new_admin(String ID) {
         initComponents();
         this.userID = ID;
         this.admin_name = admin_name;
@@ -85,7 +86,7 @@ public class new_admin extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         coursesComponent = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        login_btn1 = new javax.swing.JButton();
+        course_btn = new javax.swing.JButton();
         login_btn2 = new javax.swing.JButton();
         add_courses_btn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -111,6 +112,14 @@ public class new_admin extends javax.swing.JFrame {
         module3B_label = new javax.swing.JTextField();
         module4B_label = new javax.swing.JTextField();
         add_btn = new javax.swing.JButton();
+        activecourses = new javax.swing.JPanel();
+        jLabel28 = new javax.swing.JLabel();
+        Back_btn1 = new javax.swing.JButton();
+        jLabel26 = new javax.swing.JLabel();
+        course_name_label1 = new javax.swing.JTextField();
+        deactivate_btn = new javax.swing.JButton();
+        delete_btn = new javax.swing.JButton();
+        reactivate_btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -464,13 +473,13 @@ public class new_admin extends javax.swing.JFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel8.setText("Courses");
 
-        login_btn1.setBackground(new java.awt.Color(75, 75, 130));
-        login_btn1.setFont(new java.awt.Font("Poppins Medium", 1, 14)); // NOI18N
-        login_btn1.setForeground(new java.awt.Color(255, 255, 255));
-        login_btn1.setText("Active Courses");
-        login_btn1.addActionListener(new java.awt.event.ActionListener() {
+        course_btn.setBackground(new java.awt.Color(75, 75, 130));
+        course_btn.setFont(new java.awt.Font("Poppins Medium", 1, 14)); // NOI18N
+        course_btn.setForeground(new java.awt.Color(255, 255, 255));
+        course_btn.setText("Courses");
+        course_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                login_btn1ActionPerformed(evt);
+                course_btnActionPerformed(evt);
             }
         });
 
@@ -519,7 +528,7 @@ public class new_admin extends javax.swing.JFrame {
                         .addComponent(jLabel9)
                         .addComponent(jLabel8)
                         .addGroup(coursesComponentLayout.createSequentialGroup()
-                            .addComponent(login_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(course_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(login_btn2)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -536,7 +545,7 @@ public class new_admin extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addGap(18, 18, 18)
                 .addGroup(coursesComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(login_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(course_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(login_btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(add_courses_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -738,7 +747,7 @@ public class new_admin extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(module3B_label, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(addCoursesComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(addCoursesComponentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(module4A_label, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel25))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -749,6 +758,112 @@ public class new_admin extends javax.swing.JFrame {
         );
 
         Body.add(addCoursesComponent, "card2");
+
+        activecourses.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel28.setFont(new java.awt.Font("Palatino Linotype", 0, 24)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel28.setText("Courses");
+
+        Back_btn1.setBackground(new java.awt.Color(255, 255, 255));
+        Back_btn1.setForeground(new java.awt.Color(255, 255, 255));
+        Back_btn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrow.png"))); // NOI18N
+        Back_btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Back_btn1ActionPerformed(evt);
+            }
+        });
+
+        jLabel26.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel26.setText("Course Name");
+
+        course_name_label1.setBackground(new java.awt.Color(255, 255, 255));
+        course_name_label1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        course_name_label1.setForeground(new java.awt.Color(0, 0, 0));
+        course_name_label1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                course_name_label1ActionPerformed(evt);
+            }
+        });
+
+        deactivate_btn.setBackground(new java.awt.Color(75, 75, 130));
+        deactivate_btn.setFont(new java.awt.Font("Poppins Medium", 1, 14)); // NOI18N
+        deactivate_btn.setForeground(new java.awt.Color(255, 255, 255));
+        deactivate_btn.setText("Deactive");
+        deactivate_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deactivate_btnActionPerformed(evt);
+            }
+        });
+
+        delete_btn.setBackground(new java.awt.Color(75, 75, 130));
+        delete_btn.setFont(new java.awt.Font("Poppins Medium", 1, 14)); // NOI18N
+        delete_btn.setForeground(new java.awt.Color(255, 255, 255));
+        delete_btn.setText("Delete");
+        delete_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delete_btnActionPerformed(evt);
+            }
+        });
+
+        reactivate_btn.setBackground(new java.awt.Color(75, 75, 130));
+        reactivate_btn.setFont(new java.awt.Font("Poppins Medium", 1, 14)); // NOI18N
+        reactivate_btn.setForeground(new java.awt.Color(255, 255, 255));
+        reactivate_btn.setText("Reactive");
+        reactivate_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reactivate_btnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout activecoursesLayout = new javax.swing.GroupLayout(activecourses);
+        activecourses.setLayout(activecoursesLayout);
+        activecoursesLayout.setHorizontalGroup(
+            activecoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(activecoursesLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(activecoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(activecoursesLayout.createSequentialGroup()
+                        .addComponent(jLabel28)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 582, Short.MAX_VALUE)
+                        .addComponent(Back_btn1)
+                        .addGap(52, 52, 52))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, activecoursesLayout.createSequentialGroup()
+                        .addComponent(jLabel26)
+                        .addGap(18, 18, 18)
+                        .addComponent(course_name_label1)
+                        .addGap(285, 285, 285))
+                    .addGroup(activecoursesLayout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(reactivate_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(deactivate_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(delete_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        activecoursesLayout.setVerticalGroup(
+            activecoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(activecoursesLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(activecoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel28)
+                    .addComponent(Back_btn1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(activecoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel26)
+                    .addComponent(course_name_label1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(activecoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deactivate_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(delete_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(reactivate_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(406, Short.MAX_VALUE))
+        );
+
+        Body.add(activecourses, "card2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -865,9 +980,12 @@ public class new_admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_oldpass_fieldActionPerformed
 
-    private void login_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_login_btn1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_login_btn1ActionPerformed
+    private void course_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_course_btnActionPerformed
+        Body.removeAll();
+        Body.add(activecourses);
+        Body.repaint();
+        Body.revalidate();
+    }//GEN-LAST:event_course_btnActionPerformed
 
     private void login_btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_login_btn2ActionPerformed
         // TODO add your handling code here:
@@ -880,12 +998,32 @@ public class new_admin extends javax.swing.JFrame {
         Body.revalidate();
     }//GEN-LAST:event_add_courses_btnActionPerformed
 
+    private void Back_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Back_btn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Back_btn1ActionPerformed
+
+    private void sem_labelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sem_labelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sem_labelActionPerformed
+
     private void Back_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Back_btnActionPerformed
         Body.removeAll();
         Body.add(coursesComponent);
         Body.repaint();
         Body.revalidate();
     }//GEN-LAST:event_Back_btnActionPerformed
+
+    private void year_labelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_year_labelActionPerformed
+        String year = year_label.getSelectedItem().toString();
+
+        if(year == "Year 3") {
+            module3B_label.setVisible(true);
+            module4B_label.setVisible(true);
+        } else {
+            module3B_label.setVisible(false);
+            module4B_label.setVisible(false);
+        }
+    }//GEN-LAST:event_year_labelActionPerformed
 
     private void module4A_labelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_module4A_labelActionPerformed
         // TODO add your handling code here:
@@ -907,104 +1045,154 @@ public class new_admin extends javax.swing.JFrame {
             String module3B = module3B_label.getText();
             String module4A = module4A_label.getText();
             String module4B = module4B_label.getText();
+
             
             if (year == "Year 3"){
                 if (course_name.isEmpty() ||  sem.isEmpty()|| module1.isEmpty() || module2.isEmpty() || module3A.isEmpty()|| module3B.isEmpty() || module4A.isEmpty() || module4B.isEmpty() ) {
-                        JOptionPane.showMessageDialog(this, "Do not leave any field Empty.");
-                        return;
+                    JOptionPane.showMessageDialog(this, "Do not leave any field Empty.");
+                    return;
                 }
             } else {
                 if (course_name.isEmpty() || sem.isEmpty()|| module1.isEmpty() || module2.isEmpty() || module3A.isEmpty()|| module4A.isEmpty() ) {
-                        JOptionPane.showMessageDialog(this, "Do not leave any field Empty.");
-                        return;
+                    JOptionPane.showMessageDialog(this, "Do not leave any field Empty.");
+                    return;
                 }
             }
-            
-            prep_state  = conn.prepareStatement("Insert into courses(CourseName) values ('"+course_name+"')");
+
+            prep_state  = conn.prepareStatement("Insert into courses(CourseName, Status) values ('"+course_name+"', 'Active')");
             int row = prep_state.executeUpdate();
             System.out.println(row);
-            
+
             if (year == "Year 1") {
-                prep_state  = conn.prepareStatement("Insert into year1(sem, module_1, module_2, module_3, module_4) values (?, ?, ?, ?, ?)");
-                prep_state.setString(1, sem);
-                prep_state.setString(2, module1);
-                prep_state.setString(3, module2);
-                prep_state.setString(4, module3A);
-                prep_state.setString(5, module4B);
+                ArrayList<String> module_list1 = new ArrayList<String>();
+                module_list1.add(module1);
+                module_list1.add(module2);
+                module_list1.add(module3A);
+                module_list1.add(module4A);
                 
-                row = prep_state.executeUpdate();
-                System.out.println(row);
-                
+                for(String module: module_list1) {
+                    prep_state  = conn.prepareStatement("Insert into module(module, year, sem, Optional) values (?, ?, ?, ?)");
+                    prep_state.setString(1, module);
+                    prep_state.setString(2, year);
+                    prep_state.setString(3, sem);
+                    prep_state.setString(4, "No");
+
+                    row = prep_state.executeUpdate();
+                    System.out.println(row);
+                    
+                }
+               
                 JOptionPane.showMessageDialog(this, "Course Added Successfully.");
-                
+
                 Body.removeAll();
                 Body.add(coursesComponent);
                 Body.repaint();
                 Body.revalidate();
                 return;
-                
-            } else if (year == "Year 2") {
-                prep_state  = conn.prepareStatement("Insert into year2(sem, module_1, module_2, module_3, module_4) values (?, ?, ?, ?, ?)");
-                prep_state.setString(1, sem);
-                prep_state.setString(2, module1);
-                prep_state.setString(3, module2);
-                prep_state.setString(4, module3A);
-                prep_state.setString(5, module4B);
-                
-                row = prep_state.executeUpdate();
-                System.out.println(row);
-                
-                JOptionPane.showMessageDialog(this, "Course Added Successfully.");
-                
-                Body.removeAll();
-                Body.add(coursesComponent);
-                Body.repaint();
-                Body.revalidate();
-                return;
-                
+
             } else if (year == "Year 3") {
-                prep_state  = conn.prepareStatement("Insert into year3(sem, module_1, module_2, module_3A, moudle_3B, module_4A, module_4B) values (?, ?, ?, ?, ?, ?, ?)");
-                prep_state.setString(1, sem);
-                prep_state.setString(2, module1);
-                prep_state.setString(3, module2);
-                prep_state.setString(4, module3A);
-                prep_state.setString(5, module3B);
-                prep_state.setString(6, module4A);
-                prep_state.setString(7, module4B);
+                ArrayList<String> module_list1 = new ArrayList<String>();
+                module_list1.add(module1);
+                module_list1.add(module2);
+                module_list1.add(module3A);
+                module_list1.add(module3B);
+                module_list1.add(module4A);
+                module_list1.add(module4B);
                 
-                row = prep_state.executeUpdate();
-                System.out.println(row);
-                
+                for(String module: module_list1) {
+                    prep_state  = conn.prepareStatement("Insert into module(module, year, sem) values (?, ?, ?)");
+                    prep_state.setString(1, module);
+                    prep_state.setString(2, year);
+                    prep_state.setString(3, sem);
+
+
+                    row = prep_state.executeUpdate();
+                    System.out.println(row);
+                }
+               
                 JOptionPane.showMessageDialog(this, "Course Added Successfully.");
-                
+
                 Body.removeAll();
                 Body.add(coursesComponent);
                 Body.repaint();
                 Body.revalidate();
                 return;
-                
+
             }
             
+
         } catch (Exception ex) {
             System.out.println(ex);
         }
     }//GEN-LAST:event_add_btnActionPerformed
 
-    private void sem_labelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sem_labelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sem_labelActionPerformed
-
-    private void year_labelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_year_labelActionPerformed
-        String year = year_label.getSelectedItem().toString();
-        
-        if(year == "Year 3") {
-            module3B_label.setVisible(true);
-            module4B_label.setVisible(true);
-        } else {
-            module3B_label.setVisible(false);
-            module4B_label.setVisible(false);
+    private void deactivate_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deactivate_btnActionPerformed
+        try{   
+            Connection conn = checkConnection();
+            
+            String course_name = course_name_label1.getText();
+            prep_state = conn.prepareStatement("update courses set Status = 'Deactivate' where CourseName = '"+course_name+"'");
+            int row = prep_state.executeUpdate();
+            System.out.println(row);
+            JOptionPane.showMessageDialog(this, "Deactivated Successfully");
+            Body.removeAll();
+            Body.add(activecourses);
+            Body.repaint();
+            Body.revalidate();
+             return;
+            
+        } catch (Exception ex) {
+            System.out.println(ex);
         }
-    }//GEN-LAST:event_year_labelActionPerformed
+
+
+        
+    }//GEN-LAST:event_deactivate_btnActionPerformed
+
+    private void course_name_label1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_course_name_label1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_course_name_label1ActionPerformed
+
+    private void delete_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_btnActionPerformed
+        try{   
+            JOptionPane.showMessageDialog(this, "Are you sure you want to delete the course?");
+            Connection conn = checkConnection();
+            
+            String course_name = course_name_label1.getText();
+            prep_state = conn.prepareStatement("delete from courses where CourseName = '"+course_name+"'");
+            int row = prep_state.executeUpdate();
+            System.out.println(row);
+            JOptionPane.showMessageDialog(this, "Deleted Successfully");
+            Body.removeAll();
+            Body.add(activecourses);
+            Body.repaint();
+            Body.revalidate();
+             return;
+            
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }//GEN-LAST:event_delete_btnActionPerformed
+
+    private void reactivate_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reactivate_btnActionPerformed
+        try{   
+            Connection conn = checkConnection();
+            
+            String course_name = course_name_label1.getText();
+            prep_state = conn.prepareStatement("update courses set Status = 'Active' where CourseName = '"+course_name+"'");
+            int row = prep_state.executeUpdate();
+            System.out.println(row);
+            JOptionPane.showMessageDialog(this, "Reactivated Successfully");
+            Body.removeAll();
+            Body.add(activecourses);
+            Body.repaint();
+            Body.revalidate();
+             return;
+            
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }//GEN-LAST:event_reactivate_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1037,7 +1225,7 @@ public class new_admin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new new_admin("null", "null", "null", "null", "null", "null").setVisible(true);
+                new new_admin("null").setVisible(true);
                 
             }
         });
@@ -1045,18 +1233,24 @@ public class new_admin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Back_btn;
+    private javax.swing.JButton Back_btn1;
     private javax.swing.JPanel Body;
     private javax.swing.JButton Courses;
     private javax.swing.JButton Dashboard;
     private javax.swing.JPanel Header_dashboard;
     private javax.swing.JButton Result;
+    private javax.swing.JPanel activecourses;
     private javax.swing.JPanel addCoursesComponent;
     private javax.swing.JButton add_btn;
     private javax.swing.JButton add_courses_btn;
     private javax.swing.JPasswordField confirmpass_field;
+    private javax.swing.JButton course_btn;
     private javax.swing.JTextField course_name_label;
+    private javax.swing.JTextField course_name_label1;
     private javax.swing.JPanel coursesComponent;
     private javax.swing.JPanel dashbaord;
+    private javax.swing.JButton deactivate_btn;
+    private javax.swing.JButton delete_btn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1075,6 +1269,8 @@ public class new_admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1092,7 +1288,6 @@ public class new_admin extends javax.swing.JFrame {
     private javax.swing.JLabel label_id;
     private javax.swing.JLabel label_name;
     private javax.swing.JLabel label_phone;
-    private javax.swing.JButton login_btn1;
     private javax.swing.JButton login_btn2;
     private javax.swing.JButton logout1;
     private javax.swing.JTextField module1_label;
@@ -1105,6 +1300,7 @@ public class new_admin extends javax.swing.JFrame {
     private javax.swing.JPasswordField oldpass_field;
     private javax.swing.JButton profile;
     private javax.swing.JPanel profileComponent;
+    private javax.swing.JButton reactivate_btn;
     private javax.swing.JComboBox<String> sem_label;
     private javax.swing.JButton teacher;
     private javax.swing.JButton update_btn;
