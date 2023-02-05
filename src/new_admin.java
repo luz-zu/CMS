@@ -2,6 +2,7 @@
 import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -974,10 +975,37 @@ public class new_admin extends javax.swing.JFrame {
     }//GEN-LAST:event_StudentActionPerformed
 
     private void teacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teacherActionPerformed
-         Body.removeAll();
+        Body.removeAll();
         Body.add(teacher_components);
         Body.repaint();
         Body.revalidate();
+
+        DefaultTableModel tableModel = (DefaultTableModel)teacher_list_table.getModel();
+        tableModel.setRowCount(0); // clearing table data.
+        
+        try{ 
+            Connection conn = checkConnection(); 
+            prep_statement = conn.createStatement();
+            execute_query = prep_statement.executeQuery("Select * from teacher");
+            
+            if (execute_query.next()){
+                String teacher_id = execute_query.getString("Teacher_Id");
+                String t_f_name = execute_query.getString("First_Name");
+                String t_m_name = execute_query.getString("Middle_Name");
+                String t_l_name = execute_query.getString("Last_Name");
+                String t_name = t_f_name + " " + t_m_name + " "+ t_l_name;
+                String t_phone = execute_query.getString("Phone");
+                
+                
+                String table_data[] = {teacher_id, t_name, t_phone};
+                tableModel.addRow(table_data);
+                teacher_list_table.setEnabled(true);
+            }
+            
+            return;
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
     }//GEN-LAST:event_teacherActionPerformed
 
     private void logout1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout1ActionPerformed
@@ -1135,6 +1163,14 @@ public class new_admin extends javax.swing.JFrame {
                     return;
                 }
             }
+            
+            prep_state = conn.prepareStatement("Select courseName from courses where courseName = '"+course_name+"'");
+            execute_query = prep_state.executeQuery();
+            
+            if (execute_query.next()) {
+                JOptionPane.showMessageDialog(this, "course already exists");
+                return;
+            }
 
             prep_state  = conn.prepareStatement("Insert into courses(CourseName, Status) values ('"+course_name+"', 'Active')");
             int row = prep_state.executeUpdate();
@@ -1211,26 +1247,6 @@ public class new_admin extends javax.swing.JFrame {
                        
                     }
 
-//                    for(String module: module_list1) {
-//                        prep_state  = conn.prepareStatement("Insert into module(module, year, sem, course_id) values (?, ?, ?,?)");
-//                        prep_state.setString(1, module);
-//                        prep_state.setString(2, year);
-//                        prep_state.setString(3, sem);
-//                        prep_state.setString(4, course_id);
-//                        
-//                        row = prep_state.executeUpdate();
-//                        System.out.println(row);
-//                        
-//                        if(module.equals(module1) || module.equals(module2)) {
-//                            prep_state  = conn.prepareStatement("Update module SET Optional ='No' where module_id = '"+course_id+"'");
-//                        } else {
-//                            prep_state  = conn.prepareStatement("Update module SET Optional ='Yes' where course_id = '"+course_id+"'");
-//                        }
-//
-//
-//                        row = prep_state.executeUpdate();
-//                        System.out.println(row);
-//                    }
 
                     JOptionPane.showMessageDialog(this, "Course Added Successfully.");
 
@@ -1267,10 +1283,7 @@ public class new_admin extends javax.swing.JFrame {
             
         } catch (Exception ex) {
             System.out.println(ex);
-        }
-
-
-        
+        }   
     }//GEN-LAST:event_deactivate_btnActionPerformed
 
     private void course_name_label1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_course_name_label1ActionPerformed
