@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author DELL
  */
-public class new_admin extends javax.swing.JFrame {
+public class teacher_portal extends javax.swing.JFrame {
     Statement prep_statement;
     PreparedStatement prep_state;
     ResultSet execute_query;
@@ -23,7 +23,7 @@ public class new_admin extends javax.swing.JFrame {
     /**
      * Creates new form Registration
      */
-    public new_admin(String ID) {
+    public teacher_portal(String ID) {
         initComponents();
         this.userID = ID;
         this.admin_name = admin_name;
@@ -2336,7 +2336,7 @@ public class new_admin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new new_admin("null").setVisible(true);
+                new teacher_portal("null").setVisible(true);
                 
             }
         });

@@ -19,6 +19,24 @@ public class Registration_pg extends javax.swing.JFrame {
      */
     public Registration_pg() {
         initComponents();
+        fetchCombobox();
+    }
+    
+    
+    public void fetchCombobox() {
+        try{
+         Connection conn = checkConnection();
+         Statement prep_statement = conn.createStatement();
+         execute_query = prep_statement.executeQuery("select * from courses where Status = 'Active'");
+
+            
+            while (execute_query.next()) {
+                String tempVar2 = execute_query.getString("CourseName");
+                courseCombo.addItem(tempVar2);
+            }
+        } catch (Exception exp) {
+            System.out.println(exp);
+        }
     }
     
     public Connection checkConnection() {
@@ -63,7 +81,7 @@ public class Registration_pg extends javax.swing.JFrame {
         course_label = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         role = new javax.swing.JComboBox<>();
-        course = new javax.swing.JComboBox<>();
+        courseCombo = new javax.swing.JComboBox<>();
         jLabel17 = new javax.swing.JLabel();
         password = new javax.swing.JPasswordField();
         jLabel18 = new javax.swing.JLabel();
@@ -215,9 +233,13 @@ public class Registration_pg extends javax.swing.JFrame {
             }
         });
 
-        course.setBackground(new java.awt.Color(255, 255, 255));
-        course.setForeground(new java.awt.Color(0, 0, 0));
-        course.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bachelor of Computer Science", "Bachelor of Business Administration", "Bachelor of Software Enginnering", " " }));
+        courseCombo.setBackground(new java.awt.Color(255, 255, 255));
+        courseCombo.setForeground(new java.awt.Color(0, 0, 0));
+        courseCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                courseComboActionPerformed(evt);
+            }
+        });
 
         jLabel17.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
@@ -321,7 +343,7 @@ public class Registration_pg extends javax.swing.JFrame {
                                     .addGroup(body_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(dob, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(First_name, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(course, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(courseCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(body_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(body_loginLayout.createSequentialGroup()
                                         .addGap(37, 37, 37)
@@ -384,7 +406,7 @@ public class Registration_pg extends javax.swing.JFrame {
                         .addComponent(phone, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(body_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(course, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(courseCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(course_label))
                 .addGap(18, 18, 18)
                 .addGroup(body_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -443,7 +465,7 @@ public class Registration_pg extends javax.swing.JFrame {
            String Phone = phone.getText();
            String Email = email.getText();
            String Role = role.getSelectedItem().toString();
-           String Course = course.getSelectedItem().toString();
+           String Course = courseCombo.getSelectedItem().toString();
            String Password =  String.valueOf(password.getPassword());
            String Confirm_password = String.valueOf(confirm_password.getPassword());
            
@@ -457,7 +479,7 @@ public class Registration_pg extends javax.swing.JFrame {
                return;
            }
            if (Role == "Student") {
-                prep_statement = conn.prepareStatement("Insert into student (First_Name, Middle_Name, Last_Name, DOB, Address, Gender, Phone, Email, Course, Password) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                prep_statement = conn.prepareStatement("Insert into student (First_Name, Middle_Name, Last_Name, DOB, Address, Gender, Phone, Email, Course, Password, Year) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                 prep_statement.setString(1, first_name);
                 prep_statement.setString(2, middle_name);
                 prep_statement.setString(3, last_name);
@@ -468,6 +490,7 @@ public class Registration_pg extends javax.swing.JFrame {
                 prep_statement.setString(8, Email);
                 prep_statement.setString(9, Course);
                 prep_statement.setString(10, Password);
+                prep_statement.setString(11, "1");
                 int row = prep_statement.executeUpdate();
                 System.out.println(row);
                 JOptionPane.showMessageDialog(this, "Registration Successful");
@@ -509,13 +532,19 @@ public class Registration_pg extends javax.swing.JFrame {
     private void roleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roleActionPerformed
         String isRole = role.getSelectedItem().toString();
         if (isRole != "Student") {
-            course.setVisible(false);
+            courseCombo.setVisible(false);
             course_label.setVisible(false);
         } else {
-            course.setVisible(true);
+            courseCombo.setVisible(true);
             course_label.setVisible(true);
         }
     }//GEN-LAST:event_roleActionPerformed
+
+    private void courseComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseComboActionPerformed
+        
+                  
+
+    }//GEN-LAST:event_courseComboActionPerformed
 
     /**
      * @param args the command line arguments
@@ -561,7 +590,7 @@ public class Registration_pg extends javax.swing.JFrame {
     private javax.swing.JTextField address;
     private javax.swing.JPanel body_login;
     private javax.swing.JPasswordField confirm_password;
-    private javax.swing.JComboBox<String> course;
+    private javax.swing.JComboBox<String> courseCombo;
     private javax.swing.JLabel course_label;
     private javax.swing.JTextField dob;
     private javax.swing.JTextField email;

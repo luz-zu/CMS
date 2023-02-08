@@ -262,6 +262,16 @@ public class Login extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(this, "Invalid Email or Password");
                 }
+            } else if (role == "Teacher") {
+                execute = prep_statement.executeQuery("Select * from teacher where Email = '"+email+"' and Password = '"+password+"'");
+                if (execute.next()) {
+                    dispose();
+                    String teacher_id = execute.getString("Teacher_Id");
+                    teacher_portal teacher = new teacher_portal(teacher_id);
+                    teacher.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Invalid Email or Password");
+                }
             }
         } catch(Exception ex) {
             System.out.println(ex);
@@ -272,6 +282,8 @@ public class Login extends javax.swing.JFrame {
        dispose();
        Registration_pg rgstr = new Registration_pg();
        rgstr.setVisible(true);
+       
+       
     }//GEN-LAST:event_register_btnActionPerformed
 
     private void role_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_role_inputActionPerformed
