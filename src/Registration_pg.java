@@ -478,8 +478,11 @@ public class Registration_pg extends javax.swing.JFrame {
                JOptionPane.showMessageDialog(this, "Password not matched");
                return;
            }
+           
+           
+           
            if (Role == "Student") {
-                prep_statement = conn.prepareStatement("Insert into student (First_Name, Middle_Name, Last_Name, DOB, Address, Gender, Phone, Email, Course, Password, Year) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                prep_statement = conn.prepareStatement("Insert into student (First_Name, Middle_Name, Last_Name, DOB, Address, Gender, Phone, Email, Course, Password, Year_1) values (?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)");
                 prep_statement.setString(1, first_name);
                 prep_statement.setString(2, middle_name);
                 prep_statement.setString(3, last_name);
@@ -490,7 +493,8 @@ public class Registration_pg extends javax.swing.JFrame {
                 prep_statement.setString(8, Email);
                 prep_statement.setString(9, Course);
                 prep_statement.setString(10, Password);
-                prep_statement.setString(11, "1");
+                prep_statement.setString(11, "Yes");
+               
                 int row = prep_statement.executeUpdate();
                 System.out.println(row);
                 JOptionPane.showMessageDialog(this, "Registration Successful");

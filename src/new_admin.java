@@ -1993,7 +1993,6 @@ public class new_admin extends javax.swing.JFrame {
             
             
             execute_query = prep_statement.executeQuery("select * from courses where CourseName = '"+course_name+"'");
-            
            
             if (!execute_query.next()) {
                JOptionPane.showMessageDialog(this, "Course doesn't exist.");
@@ -2010,24 +2009,45 @@ public class new_admin extends javax.swing.JFrame {
                JOptionPane.showMessageDialog(this, "Module doesn't exist.");
                return;
             }
+
             
             String module_id = execute_query.getString("module_id");
+            String module_name = execute_query.getString("module");
+            
+            prep_statement = conn.createStatement();
+            execute_query = prep_statement.executeQuery("select * from teacher_module where teacher_id = '"+teacher_id+"' and module_id ='"+module_id+"'");
+
+           
+            if (execute_query.next()) {
+               JOptionPane.showMessageDialog(this, "Data already exist.");
+               return;
+            }
              
             prep_statement = conn.createStatement();
             execute_query = prep_statement.executeQuery("select * from teacher where teacher_id = '"+teacher_id+"'");
-            
+
            
             if (!execute_query.next()) {
                JOptionPane.showMessageDialog(this, "Teacher doesn't exist.");
                return;
             }
             
- 
+            String t_f_name = execute_query.getString("First_Name");
+            String t_m_name = execute_query.getString("Middle_Name");
+            String t_l_name = execute_query.getString("Last_Name");
+            String t_name = t_f_name+ " "+ t_m_name+" "+ t_l_name;
              
             prep_state = conn.prepareStatement("Update module SET instructor_id = '"+teacher_id+"' where module_id = '"+module_id+"'");
             prep_state.executeUpdate();
-             
             
+            prep_state = conn.prepareStatement("Insert into teacher_module (Teacher_Id, Teacher_Name, Course_Id, Module_Id, Module_Name) values (?,?,?,?,?)");
+            prep_state.setString(1, teacher_id);
+            prep_state.setString(2, t_name);
+            prep_state.setString(3, course_id);
+            prep_state.setString(4, module_id);
+            prep_state.setString(5, module_name);
+            prep_state.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Module Assigned to a Teacher.");
             
         }catch (Exception ex) {
             System.out.println(ex);
