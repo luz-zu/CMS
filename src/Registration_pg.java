@@ -431,6 +431,9 @@ public class Registration_pg extends javax.swing.JFrame {
        try{ 
            Connection conn = checkConnection(); 
            
+           String email_regex = "^[\\S]+@(heraldcollege\\.edu\\.np|heraldcollegekathmandu\\.com)$";
+           
+           
            String first_name = First_name.getText();
            String middle_name = Middle_name.getText();
            String last_name = Last_name.getText();
