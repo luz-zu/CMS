@@ -7,11 +7,12 @@
  *
  * @author DELL
  */
-
+import java.util.regex.Pattern;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
 public class Registration_pg extends javax.swing.JFrame {
+    Statement prep;
     PreparedStatement prep_statement;
     ResultSet execute_query;
     /**
@@ -453,9 +454,6 @@ public class Registration_pg extends javax.swing.JFrame {
        try{ 
            Connection conn = checkConnection(); 
            
-           String email_regex = "^[\\S]+@(heraldcollege\\.edu\\.np|heraldcollegekathmandu\\.com)$";
-           
-           
            String first_name = First_name.getText();
            String middle_name = Middle_name.getText();
            String last_name = Last_name.getText();
@@ -463,15 +461,29 @@ public class Registration_pg extends javax.swing.JFrame {
            String Address = address.getText();
            String Gender =  gender.getSelectedItem().toString();
            String Phone = phone.getText();
+           String phone_regex = "([0-9]).{9}$";
            String Email = email.getText();
+           String email_regex = "^[\\S]+@(heraldcollege\\.edu\\.np)$";
            String Role = role.getSelectedItem().toString();
            String Course = courseCombo.getSelectedItem().toString();
            String Password =  String.valueOf(password.getPassword());
            String Confirm_password = String.valueOf(confirm_password.getPassword());
            
+           
+           
            if (first_name.isEmpty() || last_name.isEmpty() || DOB.isEmpty() || Address.isEmpty() || Gender.isEmpty() || Phone.isEmpty() || Email.isEmpty() || Role.isEmpty() || Course.isEmpty() || Password.isEmpty()) {
                JOptionPane.showMessageDialog(this, "Do not leave any field empty");
                return;
+            }
+           
+           if (!Pattern.matches(phone_regex, Phone)) {
+                JOptionPane.showMessageDialog(this, "Phone number must be 10 digits!");
+                return;
+            }
+           
+           if (!Pattern.matches(email_regex, Email)) {
+                JOptionPane.showMessageDialog(this, "Please use the email provided by the college!", "ERROR", JOptionPane.ERROR_MESSAGE);
+                return;
             }
            
            if (!Password.equals(Confirm_password)) {
@@ -481,7 +493,16 @@ public class Registration_pg extends javax.swing.JFrame {
            
            
            
+           
+           
            if (Role == "Student") {
+               prep = conn.createStatement();
+               execute_query = prep.executeQuery("Select * from student where Email = '"+Email+"' or Phone = '"+Phone+"'");
+                
+                if(execute_query.next()) {
+                    JOptionPane.showMessageDialog(this, "Email or Phone Number already in use.");
+                    return;
+                }
                 prep_statement = conn.prepareStatement("Insert into student (First_Name, Middle_Name, Last_Name, DOB, Address, Gender, Phone, Email, Course, Password, Year_1) values (?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)");
                 prep_statement.setString(1, first_name);
                 prep_statement.setString(2, middle_name);
@@ -493,7 +514,7 @@ public class Registration_pg extends javax.swing.JFrame {
                 prep_statement.setString(8, Email);
                 prep_statement.setString(9, Course);
                 prep_statement.setString(10, Password);
-                prep_statement.setString(11, "Yes");
+                prep_statement.setString(11, "No");
                
                 int row = prep_statement.executeUpdate();
                 System.out.println(row);
@@ -503,6 +524,13 @@ public class Registration_pg extends javax.swing.JFrame {
                 lgn.setVisible(true);
                 return;
            } else if  (Role == "Teacher") {
+               prep = conn.createStatement();
+               execute_query = prep.executeQuery("Select * from teacher where Email = '"+Email+"' or Phone = '"+Phone+"'");
+                
+                if(execute_query.next()) {
+                    JOptionPane.showMessageDialog(this, "Email or Phone Number already in use.");
+                    return;
+                }
                 prep_statement = conn.prepareStatement("Insert into teacher (First_Name, Middle_Name, Last_Name, DOB, Address, Gender, Phone, Email, Password) values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
                 prep_statement.setString(1, first_name);
                 prep_statement.setString(2, middle_name);

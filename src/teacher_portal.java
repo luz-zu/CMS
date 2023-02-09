@@ -19,6 +19,7 @@ public class teacher_portal extends javax.swing.JFrame {
     ResultSet execute_query;
     String userID;
 
+
    
     /**
      * Creates new form Registration
@@ -60,9 +61,9 @@ public class teacher_portal extends javax.swing.JFrame {
         profile = new javax.swing.JButton();
         Body = new javax.swing.JPanel();
         dashbaord = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         profileComponent = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -102,11 +103,12 @@ public class teacher_portal extends javax.swing.JFrame {
         view_all_btn1 = new javax.swing.JButton();
         student_components = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        teacher_list_table1 = new javax.swing.JTable();
+        student_list_table = new javax.swing.JTable();
         jLabel28 = new javax.swing.JLabel();
         search_button1 = new javax.swing.JButton();
         jLabel30 = new javax.swing.JLabel();
         modulename_ComboBox = new javax.swing.JComboBox<>();
+        Update_button = new javax.swing.JButton();
 
         jList2.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -235,44 +237,22 @@ public class teacher_portal extends javax.swing.JFrame {
         dashbaord.setBackground(new java.awt.Color(255, 255, 255));
         dashbaord.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Activity Log");
-        dashbaord.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, -1, -1));
+        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel9.setFont(new java.awt.Font("Rockwell", 0, 48)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("Management System");
+        dashbaord.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 900, 90));
 
-        jTable1.setBackground(new java.awt.Color(182, 182, 221));
-        jTable1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Teacher", "Module", "Phone No"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        jLabel37.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel37.setFont(new java.awt.Font("Rockwell", 0, 48)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel37.setText("to Course ");
+        dashbaord.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 280, 900, 70));
 
-        dashbaord.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/welcome-back.png"))); // NOI18N
+        dashbaord.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, -1, -1));
 
         Body.add(dashbaord, "card2");
 
@@ -612,43 +592,56 @@ public class teacher_portal extends javax.swing.JFrame {
         student_components.setBackground(new java.awt.Color(255, 255, 255));
         student_components.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        teacher_list_table1.setBackground(new java.awt.Color(182, 182, 221));
-        teacher_list_table1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        teacher_list_table1.setModel(new javax.swing.table.DefaultTableModel(
+        student_list_table.setBackground(new java.awt.Color(182, 182, 221));
+        student_list_table.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        student_list_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Teacher Id", "Teacher", "Phone No.", "Email"
+                "Student Id", "Student Name", "Module_ID", "Module_Name", "Result"
             }
-        ));
-        jScrollPane6.setViewportView(teacher_list_table1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true
+            };
 
-        student_components.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 830, 350));
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        student_list_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                student_list_tableMouseClicked(evt);
+            }
+        });
+        jScrollPane6.setViewportView(student_list_table);
+
+        student_components.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 830, 320));
 
         jLabel28.setFont(new java.awt.Font("Palatino Linotype", 0, 24)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(0, 0, 0));
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel28.setText("Teachers");
+        jLabel28.setText("Students");
         student_components.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         search_button1.setBackground(new java.awt.Color(75, 75, 130));
@@ -670,6 +663,17 @@ public class teacher_portal extends javax.swing.JFrame {
         modulename_ComboBox.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         modulename_ComboBox.setForeground(new java.awt.Color(0, 0, 0));
         student_components.add(modulename_ComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 320, 40));
+
+        Update_button.setBackground(new java.awt.Color(75, 75, 130));
+        Update_button.setFont(new java.awt.Font("Poppins Medium", 1, 14)); // NOI18N
+        Update_button.setForeground(new java.awt.Color(255, 255, 255));
+        Update_button.setText("Update");
+        Update_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Update_buttonActionPerformed(evt);
+            }
+        });
+        student_components.add(Update_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 490, -1, -1));
 
         Body.add(student_components, "card2");
 
@@ -715,17 +719,15 @@ public class teacher_portal extends javax.swing.JFrame {
         
         try {
             
-            String module = modulename_ComboBox.getSelectedItem().toString();
-                        
             Connection conn = checkConnection();
             
             prep_state = conn.prepareStatement("Select * from teacher_module where Teacher_Id = '"+userID+"'");
             execute_query = prep_state.executeQuery(); 
             
-//            if(!execute_query.next()){
-//                JOptionPane.showMessageDialog(this, "Error");
-//                return;
-//            }
+            if(!execute_query.next()){
+                JOptionPane.showMessageDialog(this, "Error");
+                return;
+            }
             
             while (execute_query.next()) {
                     String tempVar = execute_query.getString("Module_Name");
@@ -832,12 +834,12 @@ public class teacher_portal extends javax.swing.JFrame {
            String oldPass = String.valueOf(oldpass_field.getPassword());
            String newPass = String.valueOf(newpass_field.getPassword());
            String confirmPass = String.valueOf(confirmpass_field.getPassword());
-           execute_query = prep_statement.executeQuery("select Id, Password from admin where id = '"+userID+"'");
+           execute_query = prep_statement.executeQuery("select Teacher_Id, Password from teacher where Teacher_Id = '"+userID+"'");
            if (execute_query.next()) {
                String storePassVal = execute_query.getString("Password");
                if (oldPass.equals(storePassVal)) {
                     if (newPass.equals(confirmPass)) {
-                        prep_statement.executeUpdate("update admin set Password = '"+ newPass +"' where Id = '"+userID+"'");
+                        prep_statement.executeUpdate("update teacher set Password = '"+ newPass +"' where Teacher_Id = '"+userID+"'");
                         JOptionPane.showMessageDialog(this, "Password Updated Sucessfully");
                         return;
                     } else {
@@ -950,11 +952,11 @@ public class teacher_portal extends javax.swing.JFrame {
             String teacher_id = execute_query.getString("Teacher_Id");
             prep_statement = conn.createStatement();
             
-            execute_query = prep_statement.executeQuery("Select * from module where instructor_id ='"+teacher_id+"' ");
+            execute_query = prep_statement.executeQuery("Select * from teacher_module where Teacher_Id ='"+teacher_id+"' ");
             
             while (execute_query.next()){
-                String module_id = execute_query.getString("module_id");
-                String module_name = execute_query.getString("Module");
+                String module_id = execute_query.getString("Module_Id");
+                String module_name = execute_query.getString("Module_Name");
                 
                 
                 String table_data[] = {module_id, module_name};
@@ -972,8 +974,87 @@ public class teacher_portal extends javax.swing.JFrame {
     }//GEN-LAST:event_view_all_btn_courseActionPerformed
 
     private void search_button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_button1ActionPerformed
-        // TODO add your handling code here:
+        String mod_name = modulename_ComboBox.getSelectedItem().toString();
+        DefaultTableModel tableModel = (DefaultTableModel)student_list_table.getModel();
+        tableModel.setRowCount(0); // clearing table data.
+        
+        
+        try{ 
+            Connection conn = checkConnection(); 
+            
+            prep_statement = conn.createStatement();
+            execute_query = prep_statement.executeQuery("Select * from enrolled_module where Module_Name ='"+mod_name+"' ");
+
+            while (execute_query.next()){
+                String student_id = execute_query.getString("Student_Id");
+                String student_name = execute_query.getString("Student_Name");
+                String module_id = execute_query.getString("Module_Id");
+                String module_name = execute_query.getString("Module_Name");
+                String result = execute_query.getString("Marks");
+                
+                
+                String table_data[] = {student_id, student_name, module_id, module_name,result};
+                tableModel.addRow(table_data);
+            
+            }
+            
+            return;
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
     }//GEN-LAST:event_search_button1ActionPerformed
+
+    private void Update_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Update_buttonActionPerformed
+           
+        try{
+            DefaultTableModel tableModel = (DefaultTableModel)student_list_table.getModel();
+            for (int i = 0; tableModel.getRowCount() > i; i++) {
+                 String col1 = (String) tableModel.getValueAt(i, 0);
+                String col2 = (String) tableModel.getValueAt(i, 1);
+                String col3 = (String) tableModel.getValueAt(i, 2);
+                 String col4 = (String) tableModel.getValueAt(i, 3);
+                 
+                 String col5 = (String) tableModel.getValueAt(i, 4);
+                 markException mark = new markException(Integer.parseInt(col5));
+                 mark.printException(col5, col1, col3);
+                
+
+//                System.out.println("Row: " + i + " Col 0: " + col1);
+//                System.out.println("Row: " + i + " Col 1: " + col2);
+//                System.out.println("Row: " + i + " Col 2: " + col3);
+//                System.out.println("Row: " + i + " Col 3: " + col4);
+//                System.out.println("Row: " + i + " Col 4: " + col5);
+                
+//                Connection conn = checkConnection(); 
+            
+//                prep_statement = conn.createStatement();
+//                prep_statement.executeUpdate("Update enrolled_module SET Marks = '"+col5+"' where Student_Id= '"+col1+"' and Module_Id = '"+col3+"' ");
+//    
+            }
+//        JOptionPane.showMessageDialog(this, "Result Updated."); 
+            
+
+        
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }//GEN-LAST:event_Update_buttonActionPerformed
+
+    private void student_list_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_student_list_tableMouseClicked
+        
+        DefaultTableModel tableModel = (DefaultTableModel)student_list_table.getModel();
+        for (int i = 0; tableModel.getRowCount() > i; i++) {
+             String col1 = (String) tableModel.getValueAt(i, 0);
+             String col2 = (String) tableModel.getValueAt(i, 1);
+             String col3 = (String) tableModel.getValueAt(i, 2);
+             String col4 = (String) tableModel.getValueAt(i, 3);
+
+//            System.out.println("Row: " + i + " Col 0: " + col1);
+//            System.out.println("Row: " + i + " Col 1: " + col2);
+//            System.out.println("Row: " + i + " Col 2: " + col3);
+//            System.out.println("Row: " + i + " Col 3: " + col4);
+        }
+    }//GEN-LAST:event_student_list_tableMouseClicked
 
     
     public ArrayList<String> takecourse_name(){
@@ -1042,6 +1123,7 @@ public class teacher_portal extends javax.swing.JFrame {
     private javax.swing.JPanel Header_dashboard;
     private javax.swing.JPanel Module_List;
     private javax.swing.JButton Student;
+    private javax.swing.JButton Update_button;
     private javax.swing.JPasswordField confirmpass_field;
     private javax.swing.JPanel dashbaord;
     private javax.swing.JLabel jLabel1;
@@ -1059,19 +1141,19 @@ public class teacher_portal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JList<String> jList2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private java.awt.Label label1;
     private javax.swing.JLabel label_Name_Teacher;
@@ -1089,11 +1171,11 @@ public class teacher_portal extends javax.swing.JFrame {
     private javax.swing.JButton search_button;
     private javax.swing.JButton search_button1;
     private javax.swing.JPanel student_components;
+    private javax.swing.JTable student_list_table;
     private javax.swing.JTable table_module_teacher;
     private javax.swing.JButton teacher;
     private javax.swing.JPanel teacher_components;
     private javax.swing.JTable teacher_list_table;
-    private javax.swing.JTable teacher_list_table1;
     private javax.swing.JTextField teacher_name_insert;
     private javax.swing.JButton update_btn;
     private javax.swing.JButton view_all_btn1;

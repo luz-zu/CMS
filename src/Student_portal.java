@@ -23,6 +23,7 @@ public class Student_portal extends javax.swing.JFrame {
     public Student_portal(String student_id) {
         initComponents();
         this.student_id = student_id;
+        dashbaord.setVisible(true);
     }
     
     public Connection checkConnection() {
@@ -41,6 +42,8 @@ public class Student_portal extends javax.swing.JFrame {
     private void initComponents() {
 
         popupMenu1 = new java.awt.PopupMenu();
+        jButton3 = new javax.swing.JButton();
+        update_btn3 = new javax.swing.JButton();
         header = new javax.swing.JPanel();
         label1 = new java.awt.Label();
         jLabel3 = new javax.swing.JLabel();
@@ -51,6 +54,10 @@ public class Student_portal extends javax.swing.JFrame {
         teacher = new javax.swing.JButton();
         logout1 = new javax.swing.JButton();
         Body = new javax.swing.JPanel();
+        dashbaord = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
         profileComponent = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -81,7 +88,7 @@ public class Student_portal extends javax.swing.JFrame {
         Enrolled_Btn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         enrolled_modules = new javax.swing.JTable();
-        year1_component = new javax.swing.JPanel();
+        enroll_modules = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         module1 = new javax.swing.JComboBox<>();
@@ -101,8 +108,25 @@ public class Student_portal extends javax.swing.JFrame {
         teacher_list_table = new javax.swing.JTable();
         jLabel27 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        result_student = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        result_table = new javax.swing.JTable();
+        View_pdf = new javax.swing.JButton();
 
         popupMenu1.setLabel("popupMenu1");
+
+        jButton3.setText("jButton3");
+
+        update_btn3.setBackground(new java.awt.Color(75, 75, 130));
+        update_btn3.setFont(new java.awt.Font("Poppins Medium", 1, 14)); // NOI18N
+        update_btn3.setForeground(new java.awt.Color(255, 255, 255));
+        update_btn3.setText("Update");
+        update_btn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                update_btn3ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -232,6 +256,28 @@ public class Student_portal extends javax.swing.JFrame {
 
         Body.setBackground(new java.awt.Color(255, 255, 255));
         Body.setLayout(new java.awt.CardLayout());
+
+        dashbaord.setBackground(new java.awt.Color(255, 255, 255));
+        dashbaord.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel13.setFont(new java.awt.Font("Rockwell", 0, 48)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText("Management System");
+        dashbaord.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 760, 90));
+
+        jLabel37.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel37.setFont(new java.awt.Font("Rockwell", 0, 48)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel37.setText("to Course ");
+        dashbaord.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 660, 70));
+
+        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/welcome-back.png"))); // NOI18N
+        dashbaord.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, -1));
+
+        Body.add(dashbaord, "card2");
 
         profileComponent.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -516,7 +562,7 @@ public class Student_portal extends javax.swing.JFrame {
 
         Body.add(YearWiseModule, "card2");
 
-        year1_component.setBackground(new java.awt.Color(255, 255, 255));
+        enroll_modules.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel11.setFont(new java.awt.Font("Palatino Linotype", 0, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
@@ -611,84 +657,83 @@ public class Student_portal extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout year1_componentLayout = new javax.swing.GroupLayout(year1_component);
-        year1_component.setLayout(year1_componentLayout);
-        year1_componentLayout.setHorizontalGroup(
-            year1_componentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(year1_componentLayout.createSequentialGroup()
-                .addGroup(year1_componentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(year1_componentLayout.createSequentialGroup()
+        javax.swing.GroupLayout enroll_modulesLayout = new javax.swing.GroupLayout(enroll_modules);
+        enroll_modules.setLayout(enroll_modulesLayout);
+        enroll_modulesLayout.setHorizontalGroup(
+            enroll_modulesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(enroll_modulesLayout.createSequentialGroup()
+                .addGroup(enroll_modulesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(enroll_modulesLayout.createSequentialGroup()
                         .addGap(360, 360, 360)
                         .addComponent(update_btn1))
-                    .addGroup(year1_componentLayout.createSequentialGroup()
+                    .addGroup(enroll_modulesLayout.createSequentialGroup()
                         .addGap(110, 110, 110)
                         .addComponent(year_label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(year1_componentLayout.createSequentialGroup()
+                    .addGroup(enroll_modulesLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addGroup(year1_componentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(year1_componentLayout.createSequentialGroup()
-                                .addGroup(year1_componentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(enroll_modulesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(enroll_modulesLayout.createSequentialGroup()
+                                .addGroup(enroll_modulesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(10, 10, 10)
-                                .addGroup(year1_componentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(enroll_modulesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(module4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(module2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(year1_componentLayout.createSequentialGroup()
-                                .addGroup(year1_componentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(year1_componentLayout.createSequentialGroup()
+                            .addGroup(enroll_modulesLayout.createSequentialGroup()
+                                .addGroup(enroll_modulesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(enroll_modulesLayout.createSequentialGroup()
                                         .addComponent(jLabel24)
                                         .addGap(161, 161, 161)
                                         .addComponent(jLabel25)
                                         .addGap(45, 45, 45)
                                         .addComponent(sem_label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jLabel11)
-                                    .addGroup(year1_componentLayout.createSequentialGroup()
+                                    .addGroup(enroll_modulesLayout.createSequentialGroup()
                                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(module1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, year1_componentLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, enroll_modulesLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(module3, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
-        year1_componentLayout.setVerticalGroup(
-            year1_componentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(year1_componentLayout.createSequentialGroup()
+        enroll_modulesLayout.setVerticalGroup(
+            enroll_modulesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(enroll_modulesLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(year1_componentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(enroll_modulesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
                     .addComponent(year_label, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel25)
                     .addComponent(sem_label, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(year1_componentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(enroll_modulesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(year1_componentLayout.createSequentialGroup()
+                    .addGroup(enroll_modulesLayout.createSequentialGroup()
                         .addComponent(module1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(year1_componentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(enroll_modulesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(module2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
-                .addGroup(year1_componentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(enroll_modulesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(module3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(year1_componentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(enroll_modulesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(module4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(update_btn1)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(update_btn1))
         );
 
-        Body.add(year1_component, "card2");
+        Body.add(enroll_modules, "card2");
 
         teacher_components.setBackground(new java.awt.Color(255, 255, 255));
         teacher_components.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -736,6 +781,66 @@ public class Student_portal extends javax.swing.JFrame {
         teacher_components.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 130, -1, -1));
 
         Body.add(teacher_components, "card2");
+
+        result_student.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel9.setFont(new java.awt.Font("Palatino Linotype", 0, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel9.setText("Result");
+
+        result_table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Module_Id", "Module_Name", "Year", "Marks"
+            }
+        ));
+        jScrollPane2.setViewportView(result_table);
+
+        View_pdf.setBackground(new java.awt.Color(75, 75, 130));
+        View_pdf.setFont(new java.awt.Font("Poppins Medium", 1, 14)); // NOI18N
+        View_pdf.setForeground(new java.awt.Color(255, 255, 255));
+        View_pdf.setText("Print");
+        View_pdf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                View_pdfActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout result_studentLayout = new javax.swing.GroupLayout(result_student);
+        result_student.setLayout(result_studentLayout);
+        result_studentLayout.setHorizontalGroup(
+            result_studentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(result_studentLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(result_studentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(result_studentLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 604, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(73, 234, Short.MAX_VALUE))
+                    .addGroup(result_studentLayout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(View_pdf)
+                        .addGap(251, 251, 251))))
+        );
+        result_studentLayout.setVerticalGroup(
+            result_studentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(result_studentLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(result_studentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(View_pdf))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(67, Short.MAX_VALUE))
+        );
+
+        Body.add(result_student, "card2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -835,7 +940,39 @@ public class Student_portal extends javax.swing.JFrame {
     }//GEN-LAST:event_profileActionPerformed
 
     private void ResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResultActionPerformed
-        // TODO add your handling code here:
+        Body.removeAll();
+        Body.add(result_student);
+        Body.repaint();
+        Body.revalidate();
+        
+        DefaultTableModel tableModel = (DefaultTableModel)result_table.getModel();
+        tableModel.setRowCount(0); // clearing table data.
+
+        try{
+            Connection conn = checkConnection();
+            
+            prep = conn.prepareStatement("Select * from enrolled_module where Student_Id = '"+student_id+"' and Marks != 'NULL'");
+            execute_query = prep.executeQuery(); 
+            
+            
+            
+            while (execute_query.next()){
+                String m_id = execute_query.getString("Module_Id");
+                String mod_name = execute_query.getString("Module_Name");
+                String marks = execute_query.getString("Marks");
+                String year = execute_query.getString("Year");
+                System.out.println(year);
+               
+
+                String table_data[] = {m_id, mod_name, year, marks};
+                tableModel.addRow(table_data);
+                result_table.setEnabled(false);
+            }
+
+            return;
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
     }//GEN-LAST:event_ResultActionPerformed
 
     private void teacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teacherActionPerformed
@@ -941,7 +1078,7 @@ public class Student_portal extends javax.swing.JFrame {
 
     private void Enrolled_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Enrolled_BtnActionPerformed
         Body.removeAll();
-        Body.add(year1_component);
+        Body.add(enroll_modules);
         Body.repaint();
         Body.revalidate();
         
@@ -1006,6 +1143,7 @@ public class Student_portal extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Error", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
                 String course_id = execute_query.getString("Course_Id");
+               
                 String module_id =execute_query.getString("module_id");
                 
                 prep = conn.prepareStatement("Select * from student where Student_Id = '"+student_id+"'");
@@ -1020,12 +1158,13 @@ public class Student_portal extends javax.swing.JFrame {
                 String last_name =execute_query.getString("Last_Name");
                 String full_student_name = first_name + " "+middle_name+" "+ last_name;
 
-                prep  = conn.prepareStatement("Insert into enrolled_module(Student_Id, Student_Name, Course_Id, Module_Id, Module_Name) values (?, ?, ?, ?, ?)");
+                prep  = conn.prepareStatement("Insert into enrolled_module(Student_Id, Student_Name, Course_Id, Module_Id, Module_Name,Year) values (?, ?, ?, ?, ?,?)");
                 prep.setString(1, student_id);
                 prep.setString(2, full_student_name);
                 prep.setString(3, course_id);
                 prep.setString(4, module_id);
                 prep.setString(5, module);
+                prep.setString(6, year);
 
 
                 int row = prep.executeUpdate();
@@ -1060,6 +1199,11 @@ public class Student_portal extends javax.swing.JFrame {
                 return;
             }
             String course_name = execute_query.getString("Course");
+            String Year1= execute_query.getString("Year_1");
+            String Year2= execute_query.getString("Year_2");
+            String Year3= execute_query.getString("Year_3");
+
+
 
          prep = conn.prepareStatement("Select * from courses where CourseName = '"+course_name+"' ");
             execute_query = prep.executeQuery(); 
@@ -1069,9 +1213,17 @@ public class Student_portal extends javax.swing.JFrame {
                 return;
             }
             String course_id = execute_query.getString("Course_Id");
+            System.out.println(Year1);
+            System.out.println(Year2);
+            System.out.println(Year3);
             
-            if (year == "Year 3"){
-                prep_statement = conn.createStatement();
+            
+            
+
+            
+            if (year == "Year 3" ){
+                
+             prep_statement = conn.createStatement();
                 execute_query = prep_statement.executeQuery("select * from module where year = '"+year+"' and sem='"+sem+"' and Course_Id='"+course_id+"' and Optional = 'No'");
                    
                 
@@ -1198,6 +1350,14 @@ public class Student_portal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_sem_labelActionPerformed
 
+    private void View_pdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_View_pdfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_View_pdfActionPerformed
+
+    private void update_btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_btn3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_update_btn3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1238,15 +1398,20 @@ public class Student_portal extends javax.swing.JFrame {
     private javax.swing.JPanel Body;
     private javax.swing.JButton Enrolled_Btn;
     private javax.swing.JButton Result;
+    private javax.swing.JButton View_pdf;
     private javax.swing.JPanel YearWiseModule;
+    private javax.swing.JPanel dashbaord;
+    private javax.swing.JPanel enroll_modules;
     private javax.swing.JTable enrolled_modules;
     private javax.swing.JPanel header;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -1260,14 +1425,18 @@ public class Student_portal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private java.awt.Label label1;
     private javax.swing.JLabel label_student_address;
@@ -1285,6 +1454,8 @@ public class Student_portal extends javax.swing.JFrame {
     private java.awt.PopupMenu popupMenu1;
     private javax.swing.JButton profile;
     private javax.swing.JPanel profileComponent;
+    private javax.swing.JPanel result_student;
+    private javax.swing.JTable result_table;
     private javax.swing.JComboBox<String> sem_label;
     private javax.swing.JPasswordField student_confirmpass_field;
     private javax.swing.JPasswordField student_newpass_field;
@@ -1294,7 +1465,7 @@ public class Student_portal extends javax.swing.JFrame {
     private javax.swing.JTable teacher_list_table;
     private javax.swing.JButton update_btn;
     private javax.swing.JButton update_btn1;
-    private javax.swing.JPanel year1_component;
+    private javax.swing.JButton update_btn3;
     private javax.swing.JComboBox<String> year_label;
     // End of variables declaration//GEN-END:variables
 }
